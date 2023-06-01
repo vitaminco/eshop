@@ -26,7 +26,7 @@ Route::prefix("/admin")->name("admin.")->group(function () {
     Route::prefix("/sanpham")->name("sanpham.")->group(function () {
         Route::get('/danh_sach_san_pham', [SanPhamController::class, "index"])->name("index");
         Route::get('/tao_san_pham', [SanPhamController::class, "create"])->name("create");
-
+        Route::get('/{id}/sua_san_pham', [SanPhamController::class, "edit"])->name("edit");
         //id có ? là ko bắt buộc. id phải nằm ở cuối url
         Route::post('/luu/{id?}', [SanPhamController::class, "upsert"])->name("upsert");
         //xóa

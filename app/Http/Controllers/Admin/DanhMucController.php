@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\DanhMuc;
+use App\Models\SanPham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\Validator;
@@ -34,7 +35,7 @@ class DanhMucController extends Controller
 
     public function edit($id)
     {
-        $data = DanhMuc::findOrFail($id);
+        $data = SanPham::findOrFail($id);
         return view("admin.danhmuc.edit")->with("data", $data);
     }
 

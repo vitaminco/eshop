@@ -1,3 +1,3 @@
 <x-admin-layout title="test">
-    <h1>hhhh</h1>
+    <h1>WELLCOME NÈ</h1>
 </x-admin-layout>

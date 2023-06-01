@@ -11,7 +11,6 @@
                     <th>Gía</th>
                     <th>Mô tả</th>
                     <th>Hình ảnh</th>
-                    <th>ID nười tạo</th>
                     <th>ID danh mục</th>
                     <th>Ngày tạo</th>
                     <th>Ngày update</th>
@@ -26,13 +25,14 @@
                         <td>{{ $item->ten_san_pham }}</td>
                         <td>{{ $item->gia }}</td>
                         <td>{{ $item->mo_ta }}</td>
-                        <td>{{ $item->anh_cover }}</td>
-                        <td>{{ $item->id_nguoi_tao }}</td>
+                        <td>
+                            <img src="{{ $item->anh_cover }}" width=100 />
+                        </td>
                         <td>{{ $item->id_danh_muc }}</td>
                         <td>{{ $item->created_at->format('d/m/Y') }}</td>
                         <td>{{ $item->updated_at->format('d/m/Y') }}</td>
                         <td>
-                            <a href="{{ route('admin.danhmuc.edit', ['id' => $item->id]) }}" class="btn btn-success"><i
+                            <a href="{{ route('admin.sanpham.edit', ['id' => $item->id]) }}" class="btn btn-success"><i
                                     class="bi bi-pencil-square"></i></a>
                             <form class="d-inline" action="{{ route('admin.sanpham.destroy', ['id' => $item->id]) }}"
                                 method="POST">

@@ -14,7 +14,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ route('admin.sanpham.index') }}">Trang danh
-                        sách san phẩm</a>
+                        sách sản phẩm</a>
                 </li>
             </ul>
         </div>

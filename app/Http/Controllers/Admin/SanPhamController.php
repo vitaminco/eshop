@@ -42,9 +42,9 @@ class SanPhamController extends Controller
 
     public function edit($id)
     {
-        //
+        $data = SanPham::findOrFail($id);
+        return view("admin.sanpham.edit")->with("data", $data);
     }
-
 
     public function update(Request $request, $id)
     {
@@ -58,22 +58,41 @@ class SanPhamController extends Controller
 
         //ràng buộc dữ liệu tối thiểu và tối da
         $this->customValidate($request);
-        //update hoặc insert
-        SanPham::updateOrCreate(["id" => $id], $data);
+
         if ($id == null) {
+            $filename = "";
+            $file = $request->file("anh_cover");
+            if (!empty($file)) { //tạo tên file ngẫu nhiên để tránh trùng tên gây lỗi
+                $filename = $file->hashName();
+                //luu ở thư mục public với tên mới tạo
+                $file->storeAs("/files", $filename);
+                $filename = "/files/" . $filename;
+            }
+            $data["anh_cover"] = $filename;
+
             $msg = "Thêm thành công";
         } else {
+            $file = $request->file("anh_cover");
+            if (!empty($file)) { //tạo tên file ngẫu nhiên để tránh trùng tên gây lỗi
+                $filename = $file->hashName();
+                //luu ở thư mục public với tên mới tạo
+                $file->storeAs("/files", $filename);
+                $filename = "/files/" . $filename;
+            }
+            $data["anh_cover"] = $filename;
             $msg = "Cập nhật thành công!!! verrry goood!";
         }
+        //update hoặc insert
+        SanPham::updateOrCreate(["id" => $id], $data);
         return redirect()->route('admin.sanpham.index')->with("success_msg", $msg);
     }
 
     public function destroy($id)
     {
         $dm = SanPham::findOrFail($id);
-        $ten_danh_muc = $dm->ten_san_pham;
+        $ten_san_pham = $dm->ten_san_pham;
         SanPham::destroy($id);
-        return redirect()->back()->with("success_msg", "XÓA '$ten_danh_muc' THÀNH CÔNG!!!");
+        return redirect()->back()->with("success_msg", "XÓA '$ten_san_pham' THÀNH CÔNG!!!");
     }
 
     private function customValidate(Request $request)
