@@ -12,7 +12,8 @@
                 <x-app-input name="mo_ta" label="Mô tả" />
                 <x-app-input type="file" name="anh_cover" label="Hình ảnh" />
 
-                <x-app-input name="id_danh_muc" label="ID danh mục" />
+                <x-app-select model="Danhmuc" name="id_danh_muc" label="Danh mục" displayMember="ten_danh_muc"
+                    valueMember="id" />
                 <div class="mt-3">
                     <input type="submit" class="btn btn-success" value="Thêm mới sản phẩm" />
                 </div>

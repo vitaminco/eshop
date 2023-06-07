@@ -13,7 +13,8 @@
                 <x-app-input name="mo_ta" label="Mô tả" value="{{ $data->mo_ta }}" />
                 <x-app-input type="file" name="anh_cover" label="Hình ảnh" value="{{ $data->anh_cover }}" />
 
-                <x-app-input name="id_danh_muc" label="ID danh mục" value="{{ $data->id_san_pham }}" />
+                <x-app-select model="Danhmuc" name="id_danh_muc" label="Danh mục" displayMember="ten_danh_muc"
+                    valueMember="id" selected="{{ $data->id_danh_muc }}" />
                 <div class="mt-3">
                     <input type="submit" class="btn btn-success" value="Sửa sản phẩm" />
                 </div>
