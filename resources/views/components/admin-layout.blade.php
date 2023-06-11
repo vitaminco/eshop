@@ -24,6 +24,13 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
+
+            @if (!empty(session('error_msg')))
+                <div class="mt-2 alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error_msg') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             {{ $slot }}
         </div>
     </div>

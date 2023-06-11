@@ -16,6 +16,25 @@
                     <a class="nav-link" aria-current="page" href="{{ route('admin.sanpham.index') }}">Trang danh
                         sách sản phẩm</a>
                 </li>
+                @if (Auth::check())
+                    <li class="nav-item">
+                        <button type="submit" class="btn btn-outline-danger"><a class="nav-link" aria-current="page"
+                                href="{{ route('account.logout') }}">ĐĂNG XUẤT</a>
+                        </button>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <button type="submit" class="btn btn-outline-danger"><a class="nav-link" aria-current="page"
+                                href="{{ route('account.register') }}">ĐĂNG KÝ</a>
+                        </button>
+                    </li>
+
+                    <li class="nav-item">
+                        <button type="submit" class="btn btn-warning"><a class="nav-link" aria-current="page"
+                                href="{{ route('account.login') }}">ĐĂNG NHẬP</a>
+                        </button>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

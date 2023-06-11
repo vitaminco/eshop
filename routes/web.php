@@ -13,7 +13,7 @@ Route::get('/contact', [Homecontroller::class, "contact"]);
 
 //Đường dẫn site quảm trị
 ///admin/{table}/{function}
-Route::prefix("/admin")->name("admin.")->group(function () {
+Route::prefix("/admin")->name("admin.")->middleware("auth")->group(function () {
     Route::prefix("/danhmuc")->name("danhmuc.")->group(function () {
         Route::get('/danh_sach', [DanhMucController::class, "index"])->name("index");
         Route::get('/tao_danh_muc', [DanhMucController::class, "create"])->name("create");
@@ -35,6 +35,10 @@ Route::prefix("/admin")->name("admin.")->group(function () {
         Route::post('/xoa/{id?}', [SanPhamController::class, "destroy"])->name("destroy");
     });
 });
-
+//DĂNG KÍ
 Route::get("/dang-ky", [AccountController::class, "register"])->name("account.register");
 Route::post('/dang-ky', [AccountController::class, "save"])->name("account.save");
+//ĐĂNG NHẬP
+Route::get("/dang-nhap", [AccountController::class, "login"])->name("account.login");
+Route::post("/dang-nhap", [AccountController::class, "auth"])->name("account.auth");
+Route::get("/dang-xuat", [AccountController::class, "logout"])->name("account.logout");
